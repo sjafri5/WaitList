@@ -38,6 +38,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     addressable (2.3.6)
+    angularjs-rails (1.2.22)
     arel (5.0.1.20140414130214)
     builder (3.2.2)
     capybara (2.4.3)
@@ -203,6 +204,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  angularjs-rails
   capybara
   coffee-rails (~> 4.0.0)
   factory_girl_rails
