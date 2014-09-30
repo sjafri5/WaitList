@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  root 'static_pages#welcome'
 
-  get 'static_pages/about'
+  root 'application#index'
+  get '*path' => 'application#index'
+  # root 'static_pages#welcome'
+
+  # get 'static_pages/about'
 
   resources :employees
 

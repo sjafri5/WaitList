@@ -28,6 +28,8 @@ gem 'spring',        group: :development
 
 gem 'foundation-rails'
 gem 'angularjs-rails'
+gem 'bower-rails'
+gem 'angular-rails-templates'
 
 group :development, :test do
   gem 'rspec-rails'
