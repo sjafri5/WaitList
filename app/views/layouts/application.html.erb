@@ -15,7 +15,9 @@
   	<div class='wholeapp'>
 	  	<%= render partial: "layouts/navbar" %>
 	  	<div class='row anti-nav-bar'>
-	    <%= yield %>
+	  		<div class='small-12 columns full-height'>
+	    		<%= yield %>
+	    	</div>
 	    </div>
 	    <%= javascript_include_tag "application" %>
     </div>
