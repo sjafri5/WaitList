@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
+  devise_for :restaurants
   root 'application#index'
-  get '*path' => 'application#index'
+  # get '*path' => 'application#index'
   # root 'static_pages#welcome'
 
   # get 'static_pages/about'
 
-  resources :employees
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

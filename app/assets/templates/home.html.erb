@@ -1,18 +1,68 @@
 <div class='row full-height'>
-	<div class='large-8 columns homepage-header'>
+	<div class='large-12 columns'>
+		<form ng-submit='addParty()'>
+			<div class='row'>
+		<!--     <div class="error small-12 columns"
+		        ng-show="leaseForm.late_fee.$dirty && leaseForm.late_fee.$invalid">
+		        <small class="error"
+		          ng-show="leaseForm.late_fee.$error.required">
+		          - A valid late payment amount is required.
+		        </small>
+		    </div> -->
+				<div class='small-4 columns'>
+		    	<label>Party Name:</label>
+		    </div>
+		    <div class='small-8 columns'>
+		    	<input name='partyName' ng-model="formData.party" type="text" required>
+		    </div>
+		  </div>
+		  <div class='row'>
+		<!--     <div class="error small-12 columns"
+		        ng-show="leaseForm.late_fee.$dirty && leaseForm.late_fee.$invalid">
+		        <small class="error"
+		          ng-show="leaseForm.late_fee.$error.required">
+		          - A valid late payment amount is required.
+		        </small>
+		    </div> -->
+				<div class='small-4 columns'>
+		    	<label>Size:</label>
+		    </div>
+		    <div class='small-8 columns'>
+		      <select name='partySize' ng-model="formData.partySize" ng-options="num for num in partyCount" required>
+		       <option value="">-- Select Size of Party --</option>
+		     </select>
+		    </div>
+		  </div>
+		</form>
+		<table class='large-12 columns'>
+			<tr>
+				<th>Party Name</th>
+				<th>Size</th>
+				<th>Phone Number</th>
+				<th>Send Message</th>
+				<th>Delete</th>
+			</tr>
+			<tr ng-repeat='party in parties'>
+
+			</tr>
+		</table>
+
+	</div>
+	<!-- This is now the Main page -->
+	<!-- <div class='large-8 columns homepage-header'>
 		<h2>Welcome to Vualet!</h2>
 		<h4>access your valet, faster.</h4>
 	</div>
 	<div class='large-4 columns homepage-signin'>
 		<h4>Signin</h4>
 		
-			<form>
+			<form ng-submit='signInEmployee()'>
 				<div class='row'>
 					<div class='large-4 columns'>
 					    <label for="email">Email:</label>
 					</div>
 					<div class='large-8 columns'>
-					    <input type="text" name="email">
+					    <input ng-model='empData.email' type="email" name="email">
 					</div>
 				</div>
 				<div class='row'>
@@ -20,14 +70,14 @@
 				    <label for="password">Password:</label>
 				</div>
 				<div class='large-8 columns'>
-				    <input type="password" name="password">
+				    <input ng-model='empData.password' type="password" name="password">
 				</div>
 				</div>
+				<button>sign in</button>
 				    
-				
 			</form>
 		</div>
 
-	</div>
+	</div> -->
 
 </div>

@@ -3,29 +3,32 @@
     <ul class='title-area fore-front'>
       <li class='name'>
         <h1>
-          <a href="/#">Vualet</a>
+          <a href="/#">WaitList</a>
         </h1>
       </li>
       <li class='toggle-topbar menu-icon'>
         <a href="#">Menu</a>
       </li>
     </ul>
-
-    <section class='top-bar-section'>
-        <ul class='right'>
-          <li class='has-dropdown'><a ui-sref="#">Bob</a>
-            <ul class='dropdown'>
-              <li>
-                <a data-method="post" href="/affiliate_logout" rel="nofollow">Sign Out</a>
-              </li>
-              <li class='divider'></li>
-              <li>
-                 <a href='#'>Account Settings</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-    </section>
+    <% if restaurant_signed_in? %>
+      <section class='top-bar-section'>
+          <ul class='right'>
+            <li class='has-dropdown'><a ui-sref="#"><%= current_restaurant.name %></a>
+              <ul class='dropdown'>
+                <!-- href="/affiliate_logout" -->
+                <li>
+                   <a href='#'>Account Settings</a>
+                </li>
+                <li class='divider'></li>
+                <li>
+                  <%= link_to "Sign out", destroy_restaurant_session_path, :method => :delete %>
+                </li>
+                <li class='divider'></li>
+              </ul>
+            </li>
+          </ul>
+      </section>
+    <% end %>
 
 
     
