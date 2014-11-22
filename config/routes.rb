@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   devise_for :restaurants
   root 'application#index'
+
+  scope :api, defaults: {format: :json} do
+    resources :parties
+  end
   # get '*path' => 'application#index'
   # root 'static_pages#welcome'
 

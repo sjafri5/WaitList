@@ -1,0 +1,3 @@
+object @guy
+
+attribute :id

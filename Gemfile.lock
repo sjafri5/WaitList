@@ -121,6 +121,7 @@ GEM
     multi_json (1.10.1)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
+    oj (2.10.2)
     orm_adapter (0.5.0)
     pg (0.17.1)
     phantomjs (1.9.7.1)
@@ -129,6 +130,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    rabl (0.11.0)
+      activesupport (>= 2.3.14)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -233,7 +236,9 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy
+  oj
   pg
+  rabl
   rails (= 4.1.1)
   rspec-rails
   sass-rails (~> 4.0.3)

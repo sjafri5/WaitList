@@ -1,6 +1,6 @@
 <div class='row full-height'>
 	<div class='large-12 columns'>
-		<form ng-submit='addParty()'>
+		<form ng-submit='addParty()' class='new-party-form'>
 			<div class='row'>
 		<!--     <div class="error small-12 columns"
 		        ng-show="leaseForm.late_fee.$dirty && leaseForm.late_fee.$invalid">
@@ -13,7 +13,7 @@
 		    	<label>Party Name:</label>
 		    </div>
 		    <div class='small-8 columns'>
-		    	<input name='partyName' ng-model="formData.party" type="text" required>
+		    	<input name='partyName' ng-model="formData.name" type="text" required>
 		    </div>
 		  </div>
 		  <div class='row'>
@@ -28,11 +28,32 @@
 		    	<label>Size:</label>
 		    </div>
 		    <div class='small-8 columns'>
-		      <select name='partySize' ng-model="formData.partySize" ng-options="num for num in partyCount" required>
+		      <select name='partySize' ng-model="formData.size" ng-options="num for num in partyCount" required>
 		       <option value="">-- Select Size of Party --</option>
 		     </select>
 		    </div>
 		  </div>
+		  <div class='row'>
+		<!--     <div class="error small-12 columns"
+		        ng-show="leaseForm.late_fee.$dirty && leaseForm.late_fee.$invalid">
+		        <small class="error"
+		          ng-show="leaseForm.late_fee.$error.required">
+		          - A valid late payment amount is required.
+		        </small>
+		    </div> -->
+				<div class='small-4 columns'>
+		    	<label>Phone:</label>
+		    </div>
+		    <div class='small-8 columns'>
+		    	<input name='phone' ng-model="formData.phone" type="text" required>
+		    </div>
+		  </div>
+		  <div class='row'>
+		  	<div class='small-2 small-offset-10 columns'>
+			  	<input type='submit' value='Add Party' class='button tiny'>
+		  	</div>
+		  </div>
+		  
 		</form>
 		<table class='large-12 columns'>
 			<tr>
@@ -43,7 +64,15 @@
 				<th>Delete</th>
 			</tr>
 			<tr ng-repeat='party in parties'>
-
+				<td>{{party.name}}</td>
+				<td>{{party.size}}</td>
+				<td>{{party.phone}}</td>
+				<td>
+					<button class='button tiny'>Send SMS</button>
+				</td>
+				<td>
+					<button class='button tiny alert'>Delete</button>
+				</td>
 			</tr>
 		</table>
 
