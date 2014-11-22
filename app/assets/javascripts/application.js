@@ -15,6 +15,7 @@
 //= require foundation
 
 //= require angular
+//= require ng-rails-csrf
 //= require angular-route
 //= require angular-rails-templates
 //= require_tree ../templates

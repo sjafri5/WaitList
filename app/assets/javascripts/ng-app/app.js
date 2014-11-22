@@ -1,6 +1,7 @@
 angular
     .module('AngularRails', [
         'ngRoute',
+        'ng-rails-csrf',
         'templates'
     ]).config(function ($routeProvider, $locationProvider) {
         $routeProvider

@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'devise'
@@ -35,6 +36,7 @@ gem 'foundation-rails'
 gem 'angularjs-rails'
 gem 'bower-rails'
 gem 'angular-rails-templates'
+gem 'ng-rails-csrf'
 
 group :development, :test do
   gem 'rspec-rails'

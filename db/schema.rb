@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20141122205733) do
     t.string   "name"
     t.string   "party_count"
     t.string   "phone"
+    t.integer  "restaurant_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

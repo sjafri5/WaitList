@@ -13,8 +13,18 @@ angular.module('AngularRails')
     		};
 
     		$scope.partiesReceived = function(response){
-    			console.log(response)
-    			
+    			console.log(response);
+					for (var i = 0; i < response.length ; i++) {
+						var each_party = response[i].party
+
+						var partyObject = {
+							name: each_party.name,
+							size: each_party.party_count,
+							phone: each_party.phone
+						}
+
+						$scope.parties.push(partyObject)
+					}    			
     		};
 
     		$scope.partiesFailed = function(response){
@@ -22,8 +32,14 @@ angular.module('AngularRails')
     		};
 
     		$scope.addParty = function(){
-    			console.log($scope.formData);
-    			$scope.parties.push($scope.formData);
+    			$http.post('/api/parties', $scope.formData).success($scope.partyAdded)
+    			// PartyService.addAnotherParty({'hi': 'fee'})
+	      //   	.success($scope.partyAdded)
+    			// $scope.parties.push($scope.formData);
+    		};
+
+    		$scope.partyAdded = function(response){
+    			console.log("succesfully added");
     		};
 
 

@@ -1,3 +1,4 @@
-object @guy
+collection @parties
 
-attribute :id
+
+attributes :id, :name, :party_count, :phone

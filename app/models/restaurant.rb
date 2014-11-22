@@ -3,4 +3,6 @@ class Restaurant < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable
+
+	has_many :parties
 end
