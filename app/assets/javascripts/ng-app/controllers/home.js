@@ -39,9 +39,17 @@ angular.module('AngularRails')
     		};
 
     		$scope.partyAdded = function(response){
-    			$scope.parties.push(response.party)
+    			$scope.parties.push($scope.formData)
     			$scope.formData = {};
 
+    		};
+
+    		$scope.deleteAllParties = function(){
+    			PartyService.deleteAllParties().success($scope.allPartiesDeleted)
+    		};
+
+    		$scope.allPartiesDeleted = function(response){
+    			$scope.parties = [];
     		};
 
     		$scope.deleteParty = function(index){
@@ -53,7 +61,6 @@ angular.module('AngularRails')
 
     		$scope.partyDeleted = function(response){
     			$scope.parties.splice($scope.deleteIndex, 1)
-    			console.log('yayy')
     		};
 
 

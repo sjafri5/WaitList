@@ -7,7 +7,6 @@ class PartiesController < ApplicationController
   end
 
   def create
-  	puts "HEYYYY" * 900
   	p current_restaurant
 		@party = Party.create(name: params[:name], party_count: params[:size], phone: params[:phone], restaurant_id: current_restaurant.id)
   	respond_with(@party)
@@ -16,6 +15,12 @@ class PartiesController < ApplicationController
   def destroy
   	@party = Party.find(params[:id])
   	@party.destroy
+  	render :json => 'Success'
+  end
+
+  def destroy_all
+  	puts "HEYYYY" * 900
+  	Party.destroy_all(:restaurant_id => current_restaurant.id)
   	render :json => 'Success'
   end
 

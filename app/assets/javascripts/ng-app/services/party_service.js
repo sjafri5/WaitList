@@ -14,5 +14,10 @@ angular.module('AngularRails').service('PartyService', ['$http', function($http)
 		
 	};
 
+	this.deleteAllParties = function(){
+		console.log('adfasfdsaaf')
+		return $http.get('/api/parties/destroy/all');
+
+	};
 
 }]);

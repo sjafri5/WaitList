@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   scope :api, defaults: {format: :json} do
     resources :parties
+    get '/parties/destroy/all'  => 'parties#destroy_all'
   end
   # get '*path' => 'application#index'
   # root 'static_pages#welcome'
