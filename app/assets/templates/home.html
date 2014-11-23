@@ -1,0 +1,120 @@
+<div class='row full-height'>
+	<div class='large-12 columns'>
+		<button class='button alert' ng-click='deleteAllParties()'>Delete All</button>
+		<div>
+			<h4>Filter by Party Size:</h4>
+			<select ng-model='search.size' ng-options="num for num in partyCount">
+       <option>-- Party Size --</option>
+		</div>
+	</div>
+	<div class='large-12 columns'>
+		<form ng-submit='addParty()' class='new-party-form'>
+			<div class='row'>
+		<!--     <div class="error small-12 columns"
+		        ng-show="leaseForm.late_fee.$dirty && leaseForm.late_fee.$invalid">
+		        <small class="error"
+		          ng-show="leaseForm.late_fee.$error.required">
+		          - A valid late payment amount is required.
+		        </small>
+		    </div> -->
+				<div class='small-4 columns'>
+		    	<label>Party Name:</label>
+		    </div>
+		    <div class='small-8 columns'>
+		    	<input name='partyName' ng-model="formData.name" type="text" required>
+		    </div>
+		  </div>
+		  <div class='row'>
+		<!--     <div class="error small-12 columns"
+		        ng-show="leaseForm.late_fee.$dirty && leaseForm.late_fee.$invalid">
+		        <small class="error"
+		          ng-show="leaseForm.late_fee.$error.required">
+		          - A valid late payment amount is required.
+		        </small>
+		    </div> -->
+				<div class='small-4 columns'>
+		    	<label>Size:</label>
+		    </div>
+		    <div class='small-8 columns'>
+		      <select name='partySize' ng-model="formData.size" ng-options="num for num in partyCount" required>
+		       <option value="">-- Select Size of Party --</option>
+		     </select>
+		    </div>
+		  </div>
+		  <div class='row'>
+		<!--     <div class="error small-12 columns"
+		        ng-show="leaseForm.late_fee.$dirty && leaseForm.late_fee.$invalid">
+		        <small class="error"
+		          ng-show="leaseForm.late_fee.$error.required">
+		          - A valid late payment amount is required.
+		        </small>
+		    </div> -->
+				<div class='small-4 columns'>
+		    	<label>Phone:</label>
+		    </div>
+		    <div class='small-8 columns'>
+		    	<input name='phone' ng-model="formData.phone" type="text" required>
+		    </div>
+		  </div>
+		  <div class='row'>
+		  	<div class='small-2 small-offset-10 columns'>
+			  	<input type='submit' value='Add Party' class='button tiny'>
+		  	</div>
+		  </div>
+		  
+		</form>
+		<table class='large-12 columns '>
+			<tr>
+				<th>Party Name</th>
+				<th>Size</th>
+				<th>Phone Number</th>
+				<th>Send Message</th>
+				<th>Delete</th>
+			</tr>
+			<tr ng-repeat='party in parties | filter:search:strict'>
+				<td>{{party.name}}</td>
+				<td>{{party.size}}</td>
+				<td>{{party.phone}}</td>
+				<td>
+					<button class='button tiny'>Send SMS</button>
+				</td>
+				<td>
+					<button class='button tiny alert' ng-click='deleteParty($index)'>Delete</button>
+				</td>
+			</tr>
+		</table>
+
+	</div>
+	<!-- This is now the Main page -->
+	<!-- <div class='large-8 columns homepage-header'>
+		<h2>Welcome to Vualet!</h2>
+		<h4>access your valet, faster.</h4>
+	</div>
+	<div class='large-4 columns homepage-signin'>
+		<h4>Signin</h4>
+		
+			<form ng-submit='signInEmployee()'>
+				<div class='row'>
+					<div class='large-4 columns'>
+					    <label for="email">Email:</label>
+					</div>
+					<div class='large-8 columns'>
+					    <input ng-model='empData.email' type="email" name="email">
+					</div>
+				</div>
+				<div class='row'>
+				<div class='large-4 columns'>
+				    <label for="password">Password:</label>
+				</div>
+				<div class='large-8 columns'>
+				    <input ng-model='empData.password' type="password" name="password">
+				</div>
+				</div>
+				<button>sign in</button>
+				    
+			</form>
+		</div>
+
+	</div> -->
+
+</div>
