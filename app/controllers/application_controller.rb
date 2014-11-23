@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_restaurant!
 
   def index
-
   end
+  
 end

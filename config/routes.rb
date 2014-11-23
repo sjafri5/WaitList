@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :restaurants
   root 'application#index'
+  get '/signup' => 'sign_up#new'
+  post '/create_restaurant' => 'sign_up#create'
 
   scope :api, defaults: {format: :json} do
     resources :parties
