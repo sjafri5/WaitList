@@ -1,5 +1,5 @@
 angular.module('AngularRails')
-    .controller('HomeCtrl', function ($scope, $http, PartyService) {
+    .controller('HomeCtrl', [ '$scope', '$http', 'PartyService', function ($scope, $http, PartyService) {
     		
     		$scope.init = function(){
 	        $scope.partyCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10+'];
@@ -65,4 +65,4 @@ angular.module('AngularRails')
 
 
         $scope.init();
-    });
+    }]);
