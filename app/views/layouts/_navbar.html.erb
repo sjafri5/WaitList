@@ -15,10 +15,7 @@
           <ul class='right'>
             <li class='has-dropdown'><a ui-sref="#"><%= current_restaurant.name %></a>
               <ul class='dropdown'>
-                <!-- href="/affiliate_logout" -->
-                <li>
-                   <a href='#'>Account Settings</a>
-                </li>
+              
                 <li class='divider'></li>
                 <li>
                   <%= link_to "Sign out", destroy_restaurant_session_path, :method => :delete %>
