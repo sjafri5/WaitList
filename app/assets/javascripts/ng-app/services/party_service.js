@@ -5,9 +5,14 @@ angular.module('AngularRails').service('PartyService', ['$http', function($http)
   };
  
   this.addAnotherParty = function(formData){
-  	console.log("got here");
     return $http.post('/api/parties', formData);
   };
+	
+	this.deleteParty = function(id){
+		url = '/api/parties/' + id
+		return $http.delete(url);
+		
+	};
 
 
 }]);
