@@ -14,6 +14,12 @@ angular.module('AngularRails').service('PartyService', ['$http', function($http)
 		
 	};
 
+	this.sendText = function(id){
+		url = '/api/send_text/' + id
+		return $http.post(url);
+		
+	};
+
 	this.deleteAllParties = function(){
 		console.log('adfasfdsaaf')
 		return $http.get('/api/parties/destroy/all');

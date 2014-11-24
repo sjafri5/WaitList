@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post '/create_restaurant' => 'sign_up#create'
 
   scope :api, defaults: {format: :json} do
+    post '/send_text/:id' => 'send_text#send_text_message'
     resources :parties
     get '/parties/destroy/all'  => 'parties#destroy_all'
   end

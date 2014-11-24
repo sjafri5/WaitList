@@ -76,7 +76,7 @@
 				<td>{{party.size}}</td>
 				<td>{{party.phone}}</td>
 				<td>
-					<button class='button tiny'>Send SMS</button>
+					<button class='button tiny' ng-click='sendText($index)'>Send SMS</button>
 				</td>
 				<td>
 					<button class='button tiny alert' ng-click='deleteParty($index)'>Delete</button>

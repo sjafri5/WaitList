@@ -63,6 +63,16 @@ angular.module('AngularRails')
     			$scope.parties.splice($scope.deleteIndex, 1)
     		};
 
+            $scope.sendText = function(index){
+                $scope.smsIndex = index;
+                var partyId = $scope.parties[index].id
+                PartyService.sendText(partyId).success($scope.textSuccessful)                
+            };
+
+            $scope.textSuccessful = function(response){
+                
+            };
+
 
         $scope.init();
     }]);
