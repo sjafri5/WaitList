@@ -70,7 +70,7 @@ angular.module('AngularRails')
             };
 
             $scope.textSuccessful = function(response){
-                
+                console.log("made it to text");
             };
 
 
