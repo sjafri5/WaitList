@@ -66,11 +66,15 @@ angular.module('AngularRails')
             $scope.sendText = function(index){
                 $scope.smsIndex = index;
                 var partyId = $scope.parties[index].id
-                PartyService.sendText(partyId).success($scope.textSuccessful)                
+                PartyService.sendText(partyId).success($scope.textSuccessful).error($scope.textFailed)                
             };
 
             $scope.textSuccessful = function(response){
                 console.log("made it to text");
+            };
+
+            $scope.textFailed = function(respn){
+                console.log("IT FAILLLIED");
             };
 
 
