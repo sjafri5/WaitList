@@ -6,9 +6,10 @@ angular.module('AngularRails')
 	        $scope.parties = [];
             $scope.formVisible = false;
 
+
 	        PartyService.fetchParties()
 	        	.success($scope.partiesReceived)
-	        		.error($scope.partiesFailed)
+	       	.error($scope.partiesFailed)
 
     			
     		};
@@ -18,33 +19,45 @@ angular.module('AngularRails')
             };
 
     		$scope.partiesReceived = function(response){
-					for (var i = 0; i < response.length ; i++) {
-						var each_party = response[i].party
+				for (var i = 0; i < response.length ; i++) {
+					var each_party = response[i].party
 
-						var partyObject = {
-							id: each_party.id,
-							name: each_party.name,
-							size: each_party.party_count,
-							phone: each_party.phone
-						}
+					var partyObject = {
+						id: each_party.id,
+						name: each_party.name,
+						size: each_party.party_count,
+						phone: each_party.phone
+					}
 
-						$scope.parties.push(partyObject)
-					}    			
+					$scope.parties.push(partyObject)
+				}    			
     		};
 
     		$scope.partiesFailed = function(response){
     			console.log("err");
     		};
 
-    		$scope.addParty = function(){
-    			// $http.post('/api/parties', $scope.formData).success($scope.partyAdded)
-    			PartyService.addAnotherParty($scope.formData)
-	        	.success($scope.partyAdded)
-    			// $scope.parties.push($scope.formData);
+    		$scope.addParty = function(isValid){
+          if (isValid) {
+      			PartyService.addAnotherParty($scope.formData)
+  	        	.success($scope.partyAdded)
+          }
+          else {
+            console.log("problem with your form mah nigga");
+          }
     		};
 
     		$scope.partyAdded = function(response){
-    			$scope.parties.push($scope.formData)
+                console.log(response.party)
+
+                var partyObject = {
+                    id: response.party.id,
+                    name: response.party.name,
+                    size: response.party.party_count,
+                    phone: response.party.phone
+                }
+
+    			$scope.parties.push(partyObject)
     			$scope.formData = {};
 
     		};

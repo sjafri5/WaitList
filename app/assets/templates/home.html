@@ -22,20 +22,14 @@
 
 
 	<div class='large-12 columns'>
-		<form ng-show='formVisible' ng-submit='addParty()' class='new-party-form' novalidate>
+		<form name='partyForm' ng-show='formVisible' ng-submit='addParty(partyForm.$valid)' class='new-party-form' novalidate>
+			
 			<div class='row'>
-		<!--     <div class="error small-12 columns"
-		        ng-show="leaseForm.late_fee.$dirty && leaseForm.late_fee.$invalid">
-		        <small class="error"
-		          ng-show="leaseForm.late_fee.$error.required">
-		          - A valid late payment amount is required.
-		        </small>
-		    </div> -->
 				<div class='small-4 columns'>
 		    	<label>Party Name:</label>
 		    </div>
 		    <div class='small-8 columns'>
-		    	<input name='partyName' ng-model="formData.name" type="text" required>
+		    	<input  ng-class="{ 'error-border' : partyForm.name.$invalid && !partyForm.name.$pristine }" name='name' ng-model="formData.name" type="text" required>
 		    </div>
 		  </div>
 		  <div class='row'>
@@ -50,7 +44,7 @@
 		    	<label>Size:</label>
 		    </div>
 		    <div class='small-8 columns'>
-		      <select name='partySize' ng-model="formData.size" ng-options="num for num in partyCount" required>
+		      <select name='size' ng-model="formData.size" ng-class="{ 'error-border' : partyForm.size.$invalid && !partyForm.size.$pristine }" ng-options="num for num in partyCount" required>
 		       <option value=''>-- Select Size of Party --</option>
 		     </select>
 		    </div>
@@ -64,15 +58,15 @@
 		        </small>
 		    </div> -->
 				<div class='small-4 columns'>
-		    	<label>Phone:</label>
+		    	<label>10 Digit Phone Number:</label>
 		    </div>
 		    <div class='small-8 columns'>
-		    	<input name='phone' ng-model="formData.phone" type="text" required>
+		    	<input name='phone' ng-model="formData.phone" type="text" ng-class="{ 'error-border' : partyForm.phone.$invalid && !partyForm.phone.$pristine }" ng-pattern='/^\d{10}$/' required>
 		    </div>
 		  </div>
 		  <div class='row'>
 		  	<div class='small-2 small-offset-10 columns'>
-			  	<input type='submit' value='Add Party' class='button tiny'>
+			  	<input type='submit' value='Add Party' class='button tiny' ng-disabled='partyForm.$invalid'>
 		  	</div>
 		  </div>
 		  
