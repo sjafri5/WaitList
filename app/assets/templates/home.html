@@ -1,14 +1,28 @@
 <div class='row full-height'>
+		<div class='large-12 columns'>
+			<div class='row'>
+				<div class='large-5 columns'>
+					<button class='button alert' ng-click='deleteAllParties()'>Delete All</button>
+				</div>
+				<div class='large-5 columns'>
+					<h4>Filter by Party Size:</h4>
+					<div class='combobox'>
+						<select ng-model='search.size' ng-options="num for num in partyCount">
+				      <option value=''>-- Party Size --</option>
+				    </select>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class='large-12 columns'>
+			  	<button ng-if='!formVisible' ng-click='oscillateForm()'>Add Party</button>
+			  	<button ng-if='formVisible' ng-click='oscillateForm()'>Hide Party</button>
+		</div>
+
+
+
 	<div class='large-12 columns'>
-		<button class='button alert' ng-click='deleteAllParties()'>Delete All</button>
-		<!-- <div>
-			<h4>Filter by Party Size:</h4>
-			<select ng-model='search.size' ng-options="num for num in partyCount">
-       <option>-- Party Size --</option>
-		</div> -->
-	</div>
-	<div class='large-12 columns'>
-		<form ng-submit='addParty()' class='new-party-form'>
+		<form ng-show='formVisible' ng-submit='addParty()' class='new-party-form' novalidate>
 			<div class='row'>
 		<!--     <div class="error small-12 columns"
 		        ng-show="leaseForm.late_fee.$dirty && leaseForm.late_fee.$invalid">
@@ -37,7 +51,7 @@
 		    </div>
 		    <div class='small-8 columns'>
 		      <select name='partySize' ng-model="formData.size" ng-options="num for num in partyCount" required>
-		       <option value="">-- Select Size of Party --</option>
+		       <option value=''>-- Select Size of Party --</option>
 		     </select>
 		    </div>
 		  </div>
@@ -63,26 +77,27 @@
 		  </div>
 		  
 		</form>
-		<table class='large-12 columns '>
-			<tr>
-				<th>Party Name</th>
-				<th>Size</th>
-				<th>Phone Number</th>
-				<th>Send Message</th>
-				<th>Delete</th>
-			</tr>
-			<tr ng-repeat='party in parties | filter:search:strict'>
-				<td>{{party.name}}</td>
-				<td>{{party.size}}</td>
-				<td>{{party.phone}}</td>
-				<td>
-					<button class='button tiny' ng-click='sendText($index)'>Send SMS</button>
-				</td>
-				<td>
-					<button class='button tiny alert' ng-click='deleteParty($index)'>Delete</button>
-				</td>
-			</tr>
-		</table>
+		
+			<table class='large-12 columns'>
+				<tr>
+					<th>Party Name</th>
+					<th>Size</th>
+					<th>Phone Number</th>
+					<th>Send Message</th>
+					<th>Delete</th>
+				</tr>
+				<tr ng-repeat='party in parties | filter:search:strict'>
+					<td>{{party.name}}</td>
+					<td>{{party.size}}</td>
+					<td>{{party.phone}}</td>
+					<td>
+						<button class='button tiny' ng-click='sendText($index)'>Send SMS</button>
+					</td>
+					<td>
+						<button class='button tiny alert' ng-click='deleteParty($index)'>Delete</button>
+					</td>
+				</tr>
+			</table>
 
 	</div>
 	<!-- This is now the Main page -->

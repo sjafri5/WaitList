@@ -4,6 +4,7 @@ angular.module('AngularRails')
     		$scope.init = function(){
 	        $scope.partyCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10+'];
 	        $scope.parties = [];
+            $scope.formVisible = false;
 
 	        PartyService.fetchParties()
 	        	.success($scope.partiesReceived)
@@ -11,6 +12,10 @@ angular.module('AngularRails')
 
     			
     		};
+
+            $scope.oscillateForm = function(){
+                $scope.formVisible = !$scope.formVisible
+            };
 
     		$scope.partiesReceived = function(response){
 					for (var i = 0; i < response.length ; i++) {
