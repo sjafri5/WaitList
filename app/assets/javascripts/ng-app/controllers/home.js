@@ -6,6 +6,8 @@ angular.module('AngularRails')
 	        $scope.parties = [];
             $scope.formVisible = false;
           $scope.alerts = {};
+          $scope.search = {
+          };
 
 	        PartyService.fetchParties()
 	        	.success($scope.partiesReceived)
@@ -36,6 +38,10 @@ angular.module('AngularRails')
     		$scope.partiesFailed = function(response){
     			console.log("err");
     		};
+
+        $scope.showAll = function(){
+          $scope.search = {};
+        };
 
     		$scope.addParty = function(isValid){
           if (isValid) {

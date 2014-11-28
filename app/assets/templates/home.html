@@ -5,11 +5,14 @@
 					<button class='button alert' ng-click='deleteAllParties()'>Delete All</button>
 				</div>
 				<div class='large-5 columns'>
-					<h4>Filter by Party Size:</h4>
+					<span><h4>Filter by Party Size:</h4><p ng-show='search.size'><a href="#" ng-click='showAll()'>(reset)</a></p>
+						</span>
 					<div class='combobox'>
 						<select ng-model='search.size' ng-options="num for num in partyCount">
 				      <option value=''>-- Party Size --</option>
 				    </select>
+		     		
+
 					</div>
 				</div>
 			</div>
@@ -77,7 +80,7 @@
 					<th>Send Message</th>
 					<th>Delete</th>
 				</tr>
-				<tr ng-repeat='party in parties | filter:search:strict'>
+				<tr ng-repeat='party in parties | filter:search'>
 					<td>{{party.name}}</td>
 					<td>{{party.size}}</td>
 					<td>{{party.phone}}</td>
