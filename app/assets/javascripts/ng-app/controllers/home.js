@@ -1,11 +1,11 @@
 angular.module('AngularRails')
-    .controller('HomeCtrl', [ '$scope', '$http', 'PartyService', function ($scope, $http, PartyService) {
+    .controller('HomeCtrl', [ '$scope', '$http', '$timeout', 'PartyService', function ($scope, $http, $timeout, PartyService) {
     		
     		$scope.init = function(){
 	        $scope.partyCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10+'];
 	        $scope.parties = [];
             $scope.formVisible = false;
-
+          $scope.alerts = {};
 
 	        PartyService.fetchParties()
 	        	.success($scope.partiesReceived)
@@ -59,6 +59,8 @@ angular.module('AngularRails')
 
     			$scope.parties.push(partyObject)
     			$scope.formData = {};
+          $scope.formVisible = false;
+          $scope.partyForm.$setPristine();
 
     		};
 
@@ -84,16 +86,37 @@ angular.module('AngularRails')
             $scope.sendText = function(index){
                 $scope.smsIndex = index;
                 var partyId = $scope.parties[index].id
-                console.log("i start here..");
-                PartyService.sendText(partyId).success($scope.textSuccessful).error($scope.textFailed)                
+                PartyService.sendText(partyId).success($scope.textSuccessful).error($scope.textFailed) 
+                $scope.parties[index].disable = true;  
+                $timeout(function(){
+                  $scope.parties[index].disable = false;  
+              }, 10000);             
             };
 
             $scope.textSuccessful = function(response){
-                console.log("made it to text");
+              $scope.alerts.textSuccesful = true
+              $timeout(function(){
+                $scope.alerts = {};
+              }, 4000);
+
             };
 
             $scope.textFailed = function(respn){
+               $scope.alerts.textFailed = true
                 console.log("IT FAILLLIED");
+              $timeout(function(){
+                $scope.alerts = {};
+              }, 4000);
+            };
+
+            $scope.alertsExist = function(){
+              var keys = Object.keys($scope.alerts).length
+              if (keys == 0) {
+                return false
+              }
+              else {
+                return true
+              }
             };
 
 

@@ -11,6 +11,30 @@ input.error-border {
 	border: 1px solid red;
 }
 
+.success-alert {
+	margin-bottom: 3%;
+	min-height: 50px;
+	border-radius: 5px;
+	background-color:#cfebc4;
+
+	p {
+		color: darkgreen;
+		padding: 20px 0px 20px 10px;
+	}
+}
+
+.failure-alert {
+	margin-bottom: 3%;
+	min-height: 50px;
+	border-radius: 5px;
+	background-color:#da9090;
+
+	p {
+		color: darkred;
+		padding: 20px 0px 20px 10px;
+	}
+}
+
 
 
 .anti-nav-bar {
