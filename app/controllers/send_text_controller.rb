@@ -3,7 +3,6 @@ class SendTextController < ApplicationController
   end
  
   def send_text_message
-    puts 'TEXT CONTROLLER ' * 100
     @party = Party.find(params[:id])
     @restaurant = @party.restaurant
     number_to_send_to = @party.phone
