@@ -16,7 +16,7 @@
 		</div>
 		<div class='large-12 columns'>
 			  	<button ng-if='!formVisible' ng-click='oscillateForm()'>Add Party</button>
-			  	<button ng-if='formVisible' ng-click='oscillateForm()'>Hide Party</button>
+			  	<button ng-if='formVisible' ng-click='oscillateForm()'>Hide Form</button>
 		</div>
 
 
@@ -69,7 +69,7 @@
 			</div>
 		</div>
 		
-			<table class='large-12 columns'>
+			<table class='large-12 columns' ng-if='parties.length > 0'>
 				<tr>
 					<th>Party Name</th>
 					<th>Size</th>
@@ -89,6 +89,9 @@
 					</td>
 				</tr>
 			</table>
+			<div class='no-party-alert' ng-if='parties.length == 0'>
+				<p>There are no parties, currently...</p>
+			</div>
 
 	</div>
 
