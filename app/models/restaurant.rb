@@ -5,4 +5,8 @@ class Restaurant < ActiveRecord::Base
          :recoverable, :rememberable, :trackable
 
 	has_many :parties
+
+  def self.email_is_unique(email)
+    where(email: email).count == 0
+  end
 end
