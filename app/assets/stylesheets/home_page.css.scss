@@ -1,3 +1,71 @@
+@import "foundation/components/grid";
+@import "foundation/components/buttons";
+
+.wrapper {
+	@include grid-row($behavior: nest);
+}
+
+.content {
+	@include grid-column(
+    $columns:12,
+    $last-column:false,
+    $center:false
+  );
+}
+
+.label-wrap {
+	@include grid-column(
+    $columns:4,
+    $last-column:false,
+    $center:false
+  );
+}
+
+// small-2 small-offset-10 columns 
+.form-submit-button {
+	@include grid-column(
+    $columns:2,
+    $offset:10,
+    // $float:right,
+    $last-column:false,
+    $center:false
+  );
+}
+
+.input-field-wrap {
+	@include grid-column(
+    $columns:8,
+    $last-column:false,
+    $center:false
+  );
+}
+
+.button-div {
+	@include grid-column(
+    $columns:5,
+    $last-column:false,
+    $center:false
+  );
+}
+
+.small-button {
+	@include button(
+    $padding: $button-tny
+  );
+}
+
+.small-alert-button {
+	@include button(
+    $padding: $button-tny,
+    $bg: $alert-color
+  );
+}
+
+
+
+
+
+
 .wholeapp {
 	min-height: 100%;
 	background-color: #eee;

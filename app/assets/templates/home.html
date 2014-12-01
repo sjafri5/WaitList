@@ -1,68 +1,67 @@
-<div class='row full-height'>
-		<div class='large-12 columns'>
-			<div class='row'>
-				<div class='large-5 columns'>
+<div class='wrapper'>
+		<div class='content'>
+			<div class='wrapper'>
+				<div class='button-div'>
 					<button class='button alert' ng-click='deleteAllParties()'>Delete All</button>
 				</div>
-				<div class='large-5 columns'>
-					<span><h4>Filter by Party Size:</h4><p ng-show='search.size'><a href="#" ng-click='showAll()'>(reset)</a></p>
+				<div class='button-div'>
+					
+					<span><h4>Filter by Party Size:</h4><p ng-show='search.size'><a href='#' ng-click='showAll()'>(reset)</a></p>
 						</span>
 					<div class='combobox'>
 						<select ng-model='search.size' ng-options="num for num in partyCount">
 				      <option value=''>-- Party Size --</option>
 				    </select>
-		     		
-
 					</div>
+				</div>
+				<div class='button-div'>
+			  	<button ng-if='!formVisible' ng-click='oscillateForm()'>Add Party</button>
+			  	<button ng-if='formVisible' ng-click='oscillateForm()'>Hide Form</button>
 				</div>
 			</div>
 		</div>
-		<div class='large-12 columns'>
-			  	<button ng-if='!formVisible' ng-click='oscillateForm()'>Add Party</button>
-			  	<button ng-if='formVisible' ng-click='oscillateForm()'>Hide Form</button>
-		</div>
 
 
 
-	<div class='large-12 columns'>
+	<div class='content'>
 		<form name='partyForm' ng-show='formVisible' ng-submit='addParty(partyForm.$valid)' class='new-party-form' novalidate>
 			
-			<div class='row'>
-				<div class='small-4 columns'>
+			<div class='wrapper'>
+				<div class='label-wrap'>
 		    	<label>Party Name:</label>
 		    </div>
-		    <div class='small-8 columns'>
+		    <div class='input-field-wrap'>
 		    	<input  ng-class="{ 'error-border' : partyForm.name.$invalid && !partyForm.name.$pristine }" name='name' ng-model="formData.name" type="text" required>
 		    </div>
 		  </div>
-		  <div class='row'>
+		  <div class='wrapper'>
 
-				<div class='small-4 columns'>
+				<div class='label-wrap'>
 		    	<label>Size:</label>
 		    </div>
-		    <div class='small-8 columns'>
+		    <div class='input-field-wrap'>
 		      <select name='size' ng-model="formData.size" ng-class="{ 'error-border' : partyForm.size.$invalid && !partyForm.size.$pristine }" ng-options="num for num in partyCount" required>
 		       <option value=''>-- Select Size of Party --</option>
 		     </select>
 		    </div>
 		  </div>
-		  <div class='row'>
+		  <div class='wrapper'>
 
-				<div class='small-4 columns'>
+				<div class='label-wrap'>
 		    	<label>10 Digit Phone Number:</label>
 		    </div>
-		    <div class='small-8 columns'>
+		    <div class='input-field-wrap'>
 		    	<input name='phone' ng-model="formData.phone" type="text" ng-class="{ 'error-border' : partyForm.phone.$invalid && !partyForm.phone.$pristine }" ng-pattern='/^\d{10}$/' required>
 		    </div>
 		  </div>
-		  <div class='row'>
-		  	<div class='small-2 small-offset-10 columns'>
+		  <div class='wrapper'>
+		  	<div class='form-submit-button'>
 			  	<input type='submit' value='Add Party' class='button tiny' ng-disabled='partyForm.$invalid'>
 		  	</div>
 		  </div>
 		  
 		</form>
-		<div class='alerts large-12 columns' ng-show='alertsExist()'>
+		<div class='content' ng-show='alertsExist()'>
 			<!--  -->
 			<div class='success-alert' ng-if='alerts.textSuccesful'>
 			<p >-An SMS message has been sent to the recipient.</p>
@@ -71,8 +70,10 @@
 				<p>-Oops! It seems something went wrong, the SMS message failed.</p>
 			</div>
 		</div>
-		
-			<table class='large-12 columns' ng-if='parties.length > 0'>
+		<div>
+			<party-table></party-table>
+
+			<!-- <table class='content' ng-if='parties.length > 0'>
 				<tr>
 					<th>Party Name</th>
 					<th>Size</th>
@@ -85,17 +86,17 @@
 					<td>{{party.size}}</td>
 					<td>{{party.phone}}</td>
 					<td>
-						<button class='button tiny' ng-click='sendText($index)' ng-disabled="party.disable">Send SMS</button>
+						<button class='small-button' ng-click='sendText($index)' ng-disabled="party.disable">Send SMS</button>
 					</td>
 					<td>
-						<button class='button tiny alert' ng-click='deleteParty($index)'>Delete</button>
+						<button class='small-alert-button' ng-click='deleteParty($index)'>Delete</button>
 					</td>
 				</tr>
 			</table>
 			<div class='no-party-alert' ng-if='parties.length == 0'>
 				<p>There are no parties, currently...</p>
-			</div>
-
+			</div> -->
+		</div>
 	</div>
 
 </div>
