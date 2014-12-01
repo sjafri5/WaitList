@@ -1,0 +1,23 @@
+<table class='content' ng-if='parties.length > 0'>
+        <tr>
+          <th>Party Name</th>
+          <th>Size</th>
+          <th>Phone Number</th>
+          <th>Send Message</th>
+          <th>Delete</th>
+        </tr>
+        <tr ng-repeat='party in parties | filter:search'>
+          <td>{{party.name}}</td>
+          <td>{{party.size}}</td>
+          <td>{{party.phone}}</td>
+          <td>
+            <button class='small-button' ng-click='sendText($index)' ng-disabled="party.disable">Send SMS</button>
+          </td>
+          <td>
+            <button class='small-alert-button' ng-click='deleteParty($index)'>Delete</button>
+          </td>
+        </tr>
+      </table>
+      <div class='no-party-alert' ng-if='parties.length == 0'>
+        <p>There are no parties, currently...</p>
+      </div>

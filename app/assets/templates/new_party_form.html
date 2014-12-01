@@ -1,0 +1,37 @@
+<form name='partyForm' ng-show='formVisible' ng-submit='addParty(partyForm.$valid)' class='new-party-form' novalidate>
+      
+      <div class='wrapper'>
+        <div class='label-wrap'>
+          <label>Party Name:</label>
+        </div>
+        <div class='input-field-wrap'>
+          <input  ng-class="{ 'error-border' : partyForm.name.$invalid && !partyForm.name.$pristine }" name='name' ng-model="formData.name" type="text" required>
+        </div>
+      </div>
+      <div class='wrapper'>
+
+        <div class='label-wrap'>
+          <label>Size:</label>
+        </div>
+        <div class='input-field-wrap'>
+          <select name='size' ng-model="formData.size" ng-class="{ 'error-border' : partyForm.size.$invalid && !partyForm.size.$pristine }" ng-options="num for num in partyCount" required>
+           <option value=''>-- Select Size of Party --</option>
+         </select>
+        </div>
+      </div>
+      <div class='wrapper'>
+
+        <div class='label-wrap'>
+          <label>10 Digit Phone Number:</label>
+        </div>
+        <div class='input-field-wrap'>
+          <input name='phone' ng-model="formData.phone" type="text" ng-class="{ 'error-border' : partyForm.phone.$invalid && !partyForm.phone.$pristine }" ng-pattern='/^\d{10}$/' required>
+        </div>
+      </div>
+      <div class='wrapper'>
+        <div class='form-submit-button'>
+          <input type='submit' value='Add Party' class='button tiny' ng-disabled='partyForm.$invalid'>
+        </div>
+      </div>
+      
+    </form>
